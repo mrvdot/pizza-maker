@@ -5,6 +5,7 @@ describe('Services: Data', function () {
     , _data
   // load the module
   beforeEach(module('pizzaMaker', function ($provide) {
+    // Create an easily testable mock for $cookies
     mockCookies = jasmine.createSpyObj('mockCookies',[
       'get',
       'getObject',
@@ -15,7 +16,6 @@ describe('Services: Data', function () {
     $provide.value('$cookies', mockCookies);
   }));
 
-  // Initialize the controller and a mock scope
   beforeEach(inject(function (data) {
     _data = data;
   }));

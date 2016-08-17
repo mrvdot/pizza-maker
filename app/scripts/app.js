@@ -12,6 +12,7 @@
 angular
   .module('pizzaMaker', [
     'ngCookies',
+    'ngAnimate',
     'btorfs.multiselect'
   ]);
 })(angular);

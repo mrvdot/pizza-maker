@@ -29,13 +29,16 @@ body {
   &.selected .pizza-label { cursor: default; }
 
   .edit-pizza {
-    max-height: 0;
-    overflow: hidden;
-
+    max-height: 500px;
+    overflow: visible;
     @include transition(max-height 0.3s ease-in);
-  }
 
-  &.selected .edit-pizza { max-height: 500px; }
+    &.ng-hide { max-height: 0; }
+
+    &.ng-hide,
+    &.ng-hide-add,
+    &.ng-hide-remove { overflow: hidden; }
+  }
 
   .toppings {
     .toppings-list,

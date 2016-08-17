@@ -2,10 +2,11 @@
 'use strict';
 
 angular.module('pizzaMaker')
-  .service('Pizza', function (data) {
-    var _defaults = {
+  .value('pizzaDefaults', {
       size: 'Large'
-    };
+  })
+  .service('Pizza', function (data, pizzaDefaults) {
+    var _defaults = pizzaDefaults;
 
     var Pizza = function (data) {
       if (data && angular.isObject(data)) {
@@ -72,11 +73,12 @@ angular.module('pizzaMaker')
         return _pizzas;
       }
       , save = function () {
+        if (!_pizzas) return; // Don't save if nothing has been loaded yet
         data.set(_key, _pizzas);
       }
 
     return {
-      // Get a list of pizzas, loading if we haven't yet
+      // Get a list of pizzas, loading if for some reason it hasn't yet
       list: function () {
         return _pizzas || load();
       },
@@ -85,6 +87,7 @@ angular.module('pizzaMaker')
         return _pizzas[id] || undefined;
       },
       add: function (pizza, skipSave) {
+        if (!_pizzas) load(); // Load before adding any new pizzas
         _pizzas[pizza.id] = pizza;
         if (!skipSave) {
           save();

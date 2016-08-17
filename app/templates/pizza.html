@@ -1,6 +1,6 @@
 <div class="pizza" ng-class="{selected: pizza.$selected}">
   <h4 class="pizza-label" ng-class="{unlabeled: !pizza.label}" ng-click="select()">{{pizza.label || pizza.$dynamicLabel()}}</h4>
-  <div class="edit-pizza">
+  <div class="edit-pizza" ng-show="pizza.$selected">
     <form>
       <div class="form-group">
         <label>Label (optional)</label>
@@ -25,6 +25,6 @@
         <p class="toppings-list" ng-show="pizza.toppings.length > 1">{{pizza.toppings | list}}</p>
       </div>
     </form>
-    <button class="btn btn-primary pull-right" ng-click="save()">Save</button>
+    <button class="btn btn-primary pull-right" ng-click="save()">Submit</button>
   </div>
 </div>
