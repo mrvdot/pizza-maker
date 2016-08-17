@@ -1,0 +1,30 @@
+<div class="pizza" ng-class="{selected: pizza.$selected}">
+  <h4 class="pizza-label" ng-class="{unlabeled: !pizza.label}" ng-click="select()">{{pizza.label || pizza.$dynamicLabel()}}</h4>
+  <div class="edit-pizza">
+    <form>
+      <div class="form-group">
+        <label>Label (optional)</label>
+        <input type="text" ng-model="pizza.label" placeholder="Draft Party Favorite" />
+      </div>
+      <div class="form-group">
+        <label>Size</label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="pizza.size" value="Small"> Small
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="pizza.size" value="Medium"> Medium
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="pizza.size" value="Large"> Large
+        </label>
+      </div>
+      <div class="form-group toppings">
+        <label class="control-label">Toppings</label>
+        <multiselect ng-model="pizza.toppings" options="pizza.$availableToppings"></multiselect>
+        <!-- If more than 1 is selected, multiselect stops showing values, so render a read-only list -->
+        <p class="toppings-list" ng-show="pizza.toppings.length > 1">{{pizza.toppings | list}}</p>
+      </div>
+    </form>
+    <button class="btn btn-primary pull-right" ng-click="save()">Save</button>
+  </div>
+</div>

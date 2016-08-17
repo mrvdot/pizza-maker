@@ -18,3 +18,7 @@ In order to begin transforming this from prototype into a production application
     + Once data is no longer just on the client's machine, we need a way to differentiate users (and their pizzas), as well as ensure only authorized users can make a pizza
 - Integration (E2E) testing
     + Once an app begins to have an API integration, and multiple workflows, it's best to begin adding some integration testing (protractor, selenium, etc) in addition to unit tests to ensure the app is working as a whole.
+- ID Generation
+    + Once we're storing data for multiple users, IDs would need to be generated in a more globally unique way, preferably on the backend
+- Browser testing
+    + Right now there are no "hacks" for older browsers to ensure correct layout and functionality
